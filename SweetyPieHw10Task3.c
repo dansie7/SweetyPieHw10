@@ -82,8 +82,11 @@ void MPEGVersion(unsigned int data)
 { 
     unsigned int lay, rest; // lay for the speed and rest well is for the rest
 
+    // this is for find the mpeg field
     rest = data & 0x00180000;
-    shift rest >> 19;
+    // sifting the rest to make things easier
+     rest >> 19;
+     lay = rest;
     switch (rest )
     {
         case 1:	
@@ -91,16 +94,108 @@ void MPEGVersion(unsigned int data)
             break;
 
         case 2:	
-            printf("your MPEG Version is: \n");
+            printf("your MPEG Version is: reserved \n");
             break;
 
-        case 2:	
-            printf("your MPEG Version is: \n");
+        case 3:	
+            printf("your MPEG Version is: MPEG Version 2 \n");
             break;
 
         default:	
-            printf("your MPEG Version is: \n");
+            printf("your MPEG Version is: MPEG Version 1 \n");
             break;
+    // now to get other infromations
+    // this is for the layer
+    rest = data & 0x00060000;
+    // sifting the rest to make things easier
+     rest >> 19;
+    switch (rest )
+    {
+        case 1:	
+            printf("your Layer is: reserved  \n");
+            break;
+
+        case 2:	
+            printf("your Layer is: Layer three \n");
+            break;
+
+        case 3:	
+            printf("your Layer is: Layer 2  \n");
+            break;
+
+        default:	
+            printf("your Layer is:  Layer 1 \n");
+            break;
+
+
+    rest = data & 0x00000c00;
+    rest >> 7;
+    if (lay ==  3 ) // mpeg1)
+    {
+    switch (rest )
+    {
+        case 1:
+            printf("your sampling rate is: 44100 Hz\n");
+            break;
+
+        case 2:
+            printf("your sampling rate is: 48000 Hz\n");
+            break;
+
+        case 3:
+            printf("your sampling rate is: 32000 Hz\n");
+            break;
+
+        default:
+            printf("your sampling rate is: reserv. \n");
+            break;
+
+
+    }
+    else if (lay  == 2)  // mpeg2)
+    {
+    switch (rest )
+    {
+        case 1:
+            printf("your sampling rate is: 22050 Hz\n");
+            break;
+
+        case 2:
+            printf("your sampling rate is: 24000 Hz\n");
+            break;
+
+        case 3:
+            printf("your sampling rate is: 16000 Hz\n");
+            break;
+
+        default:
+            printf("your sampling rate is: reserv \n");
+            break;
+
+
+    }
+    else if (lay ==  0 )// mpeg2.5)
+    {
+    switch (rest )
+    {
+        case 1:	
+            printf("your sampling rate is: 11025\n");
+            break;
+
+        case 2:	
+            printf("your sampling rate is: 12000\n");
+            break;
+
+        case 3:	
+            printf("your sampling rate is: 8000\n");
+            break;
+
+        default:	
+            printf("your sampling rate is: reserv. \n");
+            break;
+
+
+    }
 
     }
 }				/* -----  end switch  ----- */
