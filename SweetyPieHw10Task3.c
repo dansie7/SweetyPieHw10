@@ -77,7 +77,7 @@ void ReadFile(char *fName, unsigned int num[])
  *       Return:
  * =====================================================================================
  */
-<<<<<<< HEAD
+
 void MPEGVersion(unsigned int data)
 { 
     unsigned int lay, rest; // lay for the speed and rest well is for the rest
@@ -105,22 +105,6 @@ void MPEGVersion(unsigned int data)
     }
 }				/* -----  end switch  ----- */
 void Layer(stuff)
-=======
-void MPEGVersion()
-{
-
-}
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  Layer
- *  Description:  
- *    Arguments:
- *       Return:
- * =====================================================================================
- */
-void Layer()
->>>>>>> a817288fbbf3ae743357abb8cdcd0f5efdc465c4
 {
 
 }
