@@ -53,8 +53,18 @@ void Usage(char **info)
  *       Return:
  * =====================================================================================
  */
+
 void ReadFile(char *fName, unsigned int num[])
 {
+    FILE *inFile;
+    inFile = fopen(fName, "r");
+    while(fgetc != EOF)
+    {
+        someting[i} = getc
+            i++
+    }
+
+
 
 }
 
