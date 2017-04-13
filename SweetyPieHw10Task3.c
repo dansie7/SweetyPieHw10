@@ -3,7 +3,7 @@
  *
  *       Filename:  SweetyPieHw10Task3.c
  *       	Usage:  ./SweetyPieHw10Task3.c
- *    Description:  
+ *    Description:  Task 3
  *
  *        Version:  1.0
  *        Created:  04/11/2017 04:18:16 PM
@@ -16,6 +16,11 @@
 #include <stdlib.h>
 
 /* Function Prototypes */
+void Usage(char **info);
+void ReadFile(char *fName, unsigned int num[]);
+void MPEGVersion(stuff);
+void Layer(stuff);
+void SamplingRate(stuff);
 
 /* Main Program */
 int  main(int argc, char *argv[])
@@ -27,4 +32,68 @@ int  main(int argc, char *argv[])
 
 /* Function Defenitions */
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Usage
+ *  Description:  
+ *    Arguments:
+ *       Return:
+ * =====================================================================================
+ */
+void Usage(char **info)
+{
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  ReadFile
+ *  Description:  
+ *    Arguments:
+ *       Return:
+ * =====================================================================================
+ */
+void ReadFile(char *fName, unsigned int num[])
+{
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  MPEGVersion
+ *  Description:  
+ *    Arguments:
+ *       Return:
+ * =====================================================================================
+ */
+void MPEGVersion(stuff)
+{
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Layer
+ *  Description:  
+ *    Arguments:
+ *       Return:
+ * =====================================================================================
+ */
+void Layer(stuff)
+{
+
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  SamplingRate
+ *  Description:  
+ *    Arguments:
+ *       Return:
+ * =====================================================================================
+ */
+void SamplingRate(stuff)
+{
+
+}
 
