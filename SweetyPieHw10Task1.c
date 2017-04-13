@@ -58,22 +58,48 @@ int main(int argc, char* argv[])
 
 
 /* Function Defenitions */
-// 1) Function for InputHouse
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  InputHouse
+ *  Description:  Function for Input House
+ *    Arguments:  
+ *      Returns:
+ * =====================================================================================
+ */
+
 struct house InputHouse(......)
 {
 	//....
 }
-// 2) Function to PrintHouse info
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  PrintHouse
+ *  Description:  Function to PrintHouse info
+ *    Arguments:
+ *      Returns:
+ * =====================================================================================
+ */
+
 void PrintHouse(char *name, struct house h)
 {
-	//......
-
+	return;
 }
 
-// 3) FUnction to Compare Prices
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  ComparePrices
+ *  Description:  Function to Compare Prices
+ *    Arguments:
+ *      Returns:
+ * =====================================================================================
+ */
+
 int ComparePrices(..........)
 {
-	//......
+
 }
 
 
