@@ -66,19 +66,32 @@ void ReadFile(char *fName, unsigned int num[])
  *       Return:
  * =====================================================================================
  */
-void MPEGVersion(stuff)
-{
+void MPEGVersion(unsigned int data)
+{ 
+    unsigned int lay, rest; // lay for the speed and rest well is for the rest
 
-}
+    rest = data & 0x00180000;
+    shift rest >> 19;
+    switch (rest )
+    {
+        case 1:	
+            printf("your MPEG Version is: MPEG version 2.5 \n");
+            break;
 
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  Layer
- *  Description:  
- *    Arguments:
- *       Return:
- * =====================================================================================
- */
+        case 2:	
+            printf("your MPEG Version is: \n");
+            break;
+
+        case 2:	
+            printf("your MPEG Version is: \n");
+            break;
+
+        default:	
+            printf("your MPEG Version is: \n");
+            break;
+
+    }
+}				/* -----  end switch  ----- */
 void Layer(stuff)
 {
 
