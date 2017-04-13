@@ -14,17 +14,25 @@
  */
 #include <stdio.h>		/* For Standard I/O */
 #include <stdlib.h>
+#include <string.h>
 
 /* Function Prototypes */
 void Usage(char **info);
 void ReadFile(char *fName, unsigned int num[]);
-void MPEGVersion(stuff);
-void Layer(stuff);
-void SamplingRate(stuff);
+void MPEGVersion();
+void Layer();
+void SamplingRate();
 
 /* Main Program */
 int  main(int argc, char *argv[])
 {
+	char str[7] = "--help";
+
+	if(argc != 2 || (strcmp(argv[1], str) == 0))
+	{
+		Usage(&argv[0]);
+	}
+
 
 	return 0;
 }
@@ -35,14 +43,17 @@ int  main(int argc, char *argv[])
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  Usage
- *  Description:  
- *    Arguments:
- *       Return:
+ *  Description:  Called if parameter is !=1 or --help
+ *    Arguments:  Array of Strings
+ *       Return:  Nothing
  * =====================================================================================
  */
 void Usage(char **info)
 {
+	printf("\nUsage %s <inputFile>\n\n", *info);
+	exit (1);
 
+	return;
 }
 
 /* 
@@ -66,7 +77,7 @@ void ReadFile(char *fName, unsigned int num[])
  *       Return:
  * =====================================================================================
  */
-void MPEGVersion(stuff)
+void MPEGVersion()
 {
 
 }
@@ -79,7 +90,7 @@ void MPEGVersion(stuff)
  *       Return:
  * =====================================================================================
  */
-void Layer(stuff)
+void Layer()
 {
 
 }
@@ -92,7 +103,7 @@ void Layer(stuff)
  *       Return:
  * =====================================================================================
  */
-void SamplingRate(stuff)
+void SamplingRate()
 {
 
 }
