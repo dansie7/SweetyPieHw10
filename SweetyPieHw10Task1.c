@@ -93,6 +93,7 @@ void PrintHouse(char *name, struct house h)
 {
 	char str[LEN];
 	strcpy(str, name);
+	//Can't get %s to display the entire string of the street name, but it works perfectly in the function above when you printf the name from the address?  hmmmmmm
 	printf("\n%s at %d %s for $%.2f", str, h.strNum, h.strNam, h.price);
 
 	return;
