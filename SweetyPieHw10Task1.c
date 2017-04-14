@@ -102,14 +102,27 @@ void PrintHouse(char *name, struct house h)
  * ===  FUNCTION  ======================================================================
  *         Name:  ComparePrices
  *  Description:  Function to Compare Prices
- *    Arguments:
- *      Returns:
+ *    Arguments:  Structure house, structure house
+ *      Returns:  Integer
  * =====================================================================================
  */
-
-int ComparePrices(..........)
+int ComparePrices(struct house h, struct house j)
 {
+	int CompP;
+	if(h.price < j.price)
+	{
+		CompP = -1;
+	}
+	else if(h.price == j.price)
+	{
+		CompP = 0;
+	}
+	else
+	{
+		CompP = 1;
+	}
 
+	return CompP;
 }
 
 
