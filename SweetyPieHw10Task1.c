@@ -85,16 +85,18 @@ struct house InputHouse(void)
  * ===  FUNCTION  ======================================================================
  *         Name:  PrintHouse
  *  Description:  Function to PrintHouse info
- *    Arguments:
- *      Returns:
+ *    Arguments:  Pointer to a char & structure house
+ *      Returns:  Nothing
  * =====================================================================================
  */
-
 void PrintHouse(char *name, struct house h)
 {
+	char str[LEN];
+	strcpy(str, name);
+	printf("\n%s at %d %S for $%.2f", str, h.strNum, h.strNam, h.price);
+
 	return;
 }
-
 
 /* 
  * ===  FUNCTION  ======================================================================
