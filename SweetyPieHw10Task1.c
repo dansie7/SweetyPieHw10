@@ -93,7 +93,7 @@ void PrintHouse(char *name, struct house h)
 {
 	char str[LEN];
 	strcpy(str, name);
-	printf("\n%s at %d %S for $%.2f", str, h.strNum, h.strNam, h.price);
+	printf("\n%s at %d %s for $%.2f", str, h.strNum, h.strNam, h.price);
 
 	return;
 }
