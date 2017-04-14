@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define FSIZE 21
 /* Function Prototypes */
 void Usage(char **info);
 void ReadFile(char *fName, unsigned int num[]);
@@ -26,14 +27,16 @@ void SamplingRate();
 /* Main Program */
 int  main(int argc, char *argv[])
 {
+    char inF[FSIZE];
+    float array[FSIZE];
 	char str[7] = "--help";
 
 	if(argc != 2 || (strcmp(argv[1], str) == 0))
 	{
 		Usage(&argv[0]);
 	}
-
-
+    strcpy(inF, argv[1]);
+    ReadFile(inF, array);
 	return 0;
 }
 
