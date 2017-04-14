@@ -160,6 +160,7 @@ void MPEGVersion(unsigned int data )
 
 
     }
+    }
     else if (lay  == 2)  // mpeg2)
     {
     switch (rest )
@@ -181,6 +182,7 @@ void MPEGVersion(unsigned int data )
             break;
 
 
+    }
     }
     else if (lay ==  0 )// mpeg2.5)
     {
@@ -206,4 +208,7 @@ void MPEGVersion(unsigned int data )
     }
 
     }
-}				/* -----  end switch  ----- */
+}
+
+
+/* -----  end switch  ----- */
