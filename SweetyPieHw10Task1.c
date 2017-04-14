@@ -17,6 +17,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "SweetyPieHw10Task1.h" // Rename this to your name name_hw#_task#.h
 /* Function Prototypes */
 
@@ -63,43 +64,66 @@ int main(int argc, char* argv[])
  * ===  FUNCTION  ======================================================================
  *         Name:  InputHouse
  *  Description:  Function for Input House
- *    Arguments:  
- *      Returns:
+ *    Arguments:  Nothing
+ *      Returns:  Structure house
  * =====================================================================================
  */
-
-struct house InputHouse(......)
+struct house InputHouse(void)
 {
-	//....
+	struct house InputH;
+	printf("Please enter the street #: ");
+	scanf("%d", &InputH.strNum);
+	printf("Please enter the street Name: ");
+	scanf("%s", &InputH.strNam[LEN]);
+	printf("Please enter the Price: ");
+	scanf("%f", &InputH.price);
+
+	return InputH;
 }
 
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  PrintHouse
  *  Description:  Function to PrintHouse info
- *    Arguments:
- *      Returns:
+ *    Arguments:  Pointer to a char & structure house
+ *      Returns:  Nothing
  * =====================================================================================
  */
-
 void PrintHouse(char *name, struct house h)
 {
+	char str[LEN];
+	strcpy(str, name);
+	//Can't get %s to display the entire string of the street name, but it works perfectly in the function above when you printf the name from the address?  hmmmmmm
+	printf("\n%s at %d %s for $%.2f", str, h.strNum, h.strNam, h.price);
+
 	return;
 }
-
 
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  ComparePrices
  *  Description:  Function to Compare Prices
- *    Arguments:
- *      Returns:
+ *    Arguments:  Structure house, structure house
+ *      Returns:  Integer
  * =====================================================================================
  */
-
-int ComparePrices(..........)
+int ComparePrices(struct house h, struct house j)
 {
+	int CompP;
+	if(h.price < j.price)
+	{
+		CompP = -1;
+	}
+	else if(h.price == j.price)
+	{
+		CompP = 0;
+	}
+	else
+	{
+		CompP = 1;
+	}
 
+	return CompP;
 }
 
 
