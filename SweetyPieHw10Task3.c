@@ -20,15 +20,13 @@
 /* Function Prototypes */
 void Usage(char **info);
 void ReadFile(char *fName, unsigned int num[]);
-void MPEGVersion();
-void Layer();
-void SamplingRate();
+void MPEGVersion(arry);
 
 /* Main Program */
 int  main(int argc, char *argv[])
 {
     char inF[FSIZE];
-    float array[FSIZE];
+    unsigned int array[FSIZE];
 	char str[7] = "--help";
 
 	if(argc != 2 || (strcmp(argv[1], str) == 0))
@@ -37,6 +35,7 @@ int  main(int argc, char *argv[])
 	}
     strcpy(inF, argv[1]);
     ReadFile(inF, array);
+    MPEGVersion( array);
 	return 0;
 }
 
@@ -91,7 +90,7 @@ void ReadFile(char *fName, unsigned int num[])
  * =====================================================================================
  */
 
-void MPEGVersion(unsigned int data)
+void MPEGVersion(unsigned int data )
 { 
     unsigned int lay, rest; // lay for the speed and rest well is for the rest
 
@@ -212,21 +211,3 @@ void MPEGVersion(unsigned int data)
 
     }
 }				/* -----  end switch  ----- */
-void Layer(stuff)
-{
-
-}
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  SamplingRate
- *  Description:  
- *    Arguments:
- *       Return:
- * =====================================================================================
- */
-void SamplingRate()
-{
-
-}
-
