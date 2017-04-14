@@ -17,6 +17,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "SweetyPieHw10Task1.h" // Rename this to your name name_hw#_task#.h
 /* Function Prototypes */
 
@@ -63,14 +64,21 @@ int main(int argc, char* argv[])
  * ===  FUNCTION  ======================================================================
  *         Name:  InputHouse
  *  Description:  Function for Input House
- *    Arguments:  
- *      Returns:
+ *    Arguments:  Nothing
+ *      Returns:  Structure house
  * =====================================================================================
  */
-
-struct house InputHouse(......)
+struct house InputHouse(void)
 {
-	//....
+	struct house InputH;
+	printf("Please enter the street #: ");
+	scanf("%d", &InputH.strNum);
+	printf("Please enter the street Name: ");
+	scanf("%s", &InputH.strNam[LEN]);
+	printf("Please enter the Price: ");
+	scanf("%f", &InputH.price);
+
+	return InputH;
 }
 
 /* 

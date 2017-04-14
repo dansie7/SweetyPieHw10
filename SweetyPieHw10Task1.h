@@ -15,4 +15,16 @@
  *
  * =====================================================================================
  */
+#define LEN 20
 
+struct house
+{
+	int strNum;
+	char strNam[LEN];
+	float price;
+};
+
+/* Function Prototypes */
+struct house InputHouse(void);
+void PrintHouse(char *name, struct house h);
+int ComparePrices(struct house h, struct house j);
