@@ -71,9 +71,10 @@ void ReadFile(char *fName, unsigned int num[])
 {
     FILE *inFile;
     inFile = fopen(fName, "r");
-    while(fgetc != EOF)
+    while(getchar() != EOF)
     {
-        someting[i} = getc
+        num[i] = getchar();
+
             i++
     }
 
