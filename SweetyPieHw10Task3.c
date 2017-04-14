@@ -73,13 +73,8 @@ void ReadFile(char *fName, unsigned int num[])
     inFile = fopen(fName, "r");
     while(getchar() != EOF)
     {
-        num[i] = getchar();
 
-            i++
     }
-
-
-
 }
 
 /* 
