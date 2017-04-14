@@ -112,6 +112,7 @@ void MPEGVersion(unsigned int data )
         default:	
             printf("your MPEG Version is: MPEG Version 1 \n");
             break;
+    }
     // now to get other infromations
     // this is for the layer
     rest = data & 0x00060000;
@@ -134,7 +135,7 @@ void MPEGVersion(unsigned int data )
         default:	
             printf("your Layer is:  Layer 1 \n");
             break;
-
+    }
 
     rest = data & 0x00000c00;
     rest >> 7;
@@ -208,7 +209,9 @@ void MPEGVersion(unsigned int data )
     }
 
     }
+    return;
 }
+
 
 
 /* -----  end switch  ----- */
