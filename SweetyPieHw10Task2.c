@@ -17,6 +17,14 @@
 #include <string.h>
 
 #define SIZE 40
+
+struct tsunami
+{
+	int mo, da, yr, fatalities;
+	double max_height;
+	char location[20];
+};
+
 /* Function Prototypes */
 void Usage(char **info);
 
