@@ -20,7 +20,7 @@
 /* Function Prototypes */
 void Usage(char **info);
 void ReadFile(char *fName, unsigned int num[]);
-void MPEGVersion(arry);
+void MPEGVersion(unsigned int data);
 
 /* Main Program */
 int  main(int argc, char *argv[])
@@ -69,12 +69,24 @@ void Usage(char **info)
 
 void ReadFile(char *fName, unsigned int num[])
 {
+    int c;
+    int d = 0; 
     FILE *inFile;
+    char mp3[9];
     inFile = fopen(fName, "r");
-    while(getchar() != EOF)
+   do
     {
-
-    }
+        c = fgetc(inFile);
+        if(c != EOF && c != ',')
+        {
+            mp3[d] = c; 
+            d++; 
+        }
+    }while (c != EOF);
+   for(int i = 0; i < 8; i++)
+   {
+       num[i] = strtoul(&mp3[i], NULL, 0);
+   } 
 }
 
 /* 
