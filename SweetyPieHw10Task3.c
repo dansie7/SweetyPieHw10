@@ -35,7 +35,7 @@ int  main(int argc, char *argv[])
 	}
     strcpy(inF, argv[1]);
     ReadFile(inF, array);
-    MPEGVersion( array);
+    //MPEGVersion( array);
 	return 0;
 }
 
@@ -100,7 +100,7 @@ void ReadFile(char *fName, unsigned int num)
  * =====================================================================================
  */
 
-void MPEGVersion(unsigned int data )
+/*  void MPEGVersion(unsigned int data )
 { 
     unsigned int lay, rest; // lay for the speed and rest well is for the rest
 
@@ -224,7 +224,7 @@ void MPEGVersion(unsigned int data )
 
     }
     return;
-}
+}*/
 
 
 
