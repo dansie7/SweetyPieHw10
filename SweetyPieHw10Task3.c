@@ -19,14 +19,14 @@
 #define FSIZE 21
 /* Function Prototypes */
 void Usage(char **info);
-void ReadFile(char *fName, unsigned int num[]);
+void ReadFile(char *fName, unsigned int num);
 void MPEGVersion(unsigned int data);
 
 /* Main Program */
 int  main(int argc, char *argv[])
 {
     char inF[FSIZE];
-    unsigned int array[FSIZE];
+    unsigned int array;
 	char str[7] = "--help";
 
 	if(argc != 2 || (strcmp(argv[1], str) == 0))
@@ -67,7 +67,7 @@ void Usage(char **info)
  * =====================================================================================
  */
 
-void ReadFile(char *fName, unsigned int num[])
+void ReadFile(char *fName, unsigned int num)
 {
     int c;
     int d = 0; 
@@ -83,10 +83,12 @@ void ReadFile(char *fName, unsigned int num[])
             d++; 
         }
     }while (c != EOF);
+       num = strtoul(mp3, NULL, 0);
+   /*  
    for(int i = 0; i < 8; i++)
    {
        num[i] = strtoul(&mp3[i], NULL, 0);
-   } 
+   } */
 }
 
 /* 
