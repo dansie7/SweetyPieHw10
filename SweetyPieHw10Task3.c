@@ -69,24 +69,50 @@ void Usage(char **info)
 
 void ReadFile(char *fName, unsigned int num[])
 {
-    int c;
-    int d = 0; 
-    FILE *inFile;
-    char mp3[9];
-    inFile = fopen(fName, "r");
-   do
-    {
-        c = fgetc(inFile);
-        if(c != EOF && c != ',')
-        {
-            mp3[d] = c; 
-            d++; 
-        }
-    }while (c != EOF);
-   for(int i = 0; i < 8; i++)
-   {
-       num[i] = strtoul(&mp3[i], NULL, 0);
-   } 
+	FILE *inFile;
+	inFile = fopen(fName, "r");
+
+	char header[FSIZE];
+	if(inFile != NULL)
+	{
+		printf("\n We can read %s\n", fName);
+		char c;
+		int i = 0;
+		int j = 0;
+		while(i < 100 && (c = fgetc(inFile)) != EOF) 
+		{
+			switch (c)
+			{
+				case ',':
+					continue;
+				case '\n':
+					header[i] = '\0';
+					printf("Done: %s\n\n", header);
+					num[j] = strtoul(header, NULL, 16);
+					j++;
+					i = 0;//reset index
+					continue;
+				default:
+					header[i] = c;
+					i++;
+					break;
+			}
+			printf("[%c] i = [%d]\n", c, i);
+		}
+		
+	}
+	else
+	{
+		printf("\nCan't Read %s", fName);
+		exit(1);
+	}
+	// Display array of header (integers, hex)
+	for(int i = 0; i < 3; i++)
+	{
+		printf("[%d][%X]\n", num[i], num[i]);
+	}
+
+	return;
 }
 
 /* 
