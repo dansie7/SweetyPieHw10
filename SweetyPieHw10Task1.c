@@ -74,7 +74,7 @@ struct house InputHouse(void)
 	printf("Please enter the street #: ");
 	scanf("%d", &InputH.strNum);
 	printf("Please enter the street Name: ");
-	scanf("%s", &InputH.strNam[LEN]);
+	scanf("%s", InputH.strNam);
 	printf("Please enter the Price: ");
 	scanf("%f", &InputH.price);
 
@@ -93,7 +93,6 @@ void PrintHouse(char *name, struct house h)
 {
 	char str[LEN];
 	strcpy(str, name);
-	//Can't get %s to display the entire string of the street name, but it works perfectly in the function above when you printf the name from the address?  hmmmmmm
 	printf("\n%s at %d %s for $%.2f", str, h.strNum, h.strNam, h.price);
 
 	return;
