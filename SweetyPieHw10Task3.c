@@ -20,7 +20,7 @@
 /* Function Prototypes */
 void Usage(char **info);
 void ReadFile(char *fName, unsigned int num[]);
-void MPEGVersion(unsigned int data);
+ void MPEGVersion(unsigned int data[] );
 
 /* Main Program */
 int  main(int argc, char *argv[])
@@ -111,6 +111,7 @@ void ReadFile(char *fName, unsigned int num[])
 	{
 		printf("[%d][%X]\n", num[i], num[i]);
 	}
+    MPEGVersion (num);
 
 	return;
 }
@@ -124,26 +125,31 @@ void ReadFile(char *fName, unsigned int num[])
  * =====================================================================================
  */
 
-/*  void MPEGVersion(unsigned int data )
+ void MPEGVersion(unsigned int data[] )
 { 
     unsigned int lay, rest; // lay for the speed and rest well is for the rest
 
+    // making a for look to do  all three thing in the mp3 file heare
+   for ( int i  = 0; i < 3; i++)
+    {
     // this is for find the mpeg field
-    rest = data & 0x00180000;
+    rest = data[i] & 0x00180000;
     // sifting the rest to make things easier
-     rest >> 19;
+     rest = rest >> 19;
      lay = rest;
+     printf("%x" , lay);
+     // did this to test stupid lay
     switch (rest )
     {
-        case 1:	
+        case 0:	
             printf("your MPEG Version is: MPEG version 2.5 \n");
             break;
 
-        case 2:	
+        case 1:	
             printf("your MPEG Version is: reserved \n");
             break;
 
-        case 3:	
+        case 2:	
             printf("your MPEG Version is: MPEG Version 2 \n");
             break;
 
@@ -151,22 +157,24 @@ void ReadFile(char *fName, unsigned int num[])
             printf("your MPEG Version is: MPEG Version 1 \n");
             break;
     }
+    
     // now to get other infromations
     // this is for the layer
-    rest = data & 0x00060000;
+      
+    rest = data[i] & 0x00060000;
     // sifting the rest to make things easier
-     rest >> 19;
+    rest = rest >> 17;
     switch (rest )
     {
-        case 1:	
+        case 0:	
             printf("your Layer is: reserved  \n");
             break;
 
-        case 2:	
+        case 1:	
             printf("your Layer is: Layer three \n");
             break;
 
-        case 3:	
+        case 2:	
             printf("your Layer is: Layer 2  \n");
             break;
 
@@ -175,21 +183,21 @@ void ReadFile(char *fName, unsigned int num[])
             break;
     }
 
-    rest = data & 0x00000c00;
-    rest >> 7;
+    rest = data[i] & 0x00000c00;
+   rest =  rest >> 10;
     if (lay ==  3 ) // mpeg1)
     {
     switch (rest )
     {
-        case 1:
+        case 0:
             printf("your sampling rate is: 44100 Hz\n");
             break;
 
-        case 2:
+        case 1:
             printf("your sampling rate is: 48000 Hz\n");
             break;
 
-        case 3:
+        case 2:
             printf("your sampling rate is: 32000 Hz\n");
             break;
 
@@ -204,15 +212,15 @@ void ReadFile(char *fName, unsigned int num[])
     {
     switch (rest )
     {
-        case 1:
+        case 0:
             printf("your sampling rate is: 22050 Hz\n");
             break;
 
-        case 2:
+        case 1:
             printf("your sampling rate is: 24000 Hz\n");
             break;
 
-        case 3:
+        case 2:
             printf("your sampling rate is: 16000 Hz\n");
             break;
 
@@ -227,15 +235,15 @@ void ReadFile(char *fName, unsigned int num[])
     {
     switch (rest )
     {
-        case 1:	
+        case 0:	
             printf("your sampling rate is: 11025\n");
             break;
 
-        case 2:	
+        case 1:	
             printf("your sampling rate is: 12000\n");
             break;
 
-        case 3:	
+        case 2:	
             printf("your sampling rate is: 8000\n");
             break;
 
@@ -245,10 +253,10 @@ void ReadFile(char *fName, unsigned int num[])
 
 
     }
-
+    }
     }
     return;
-}*/
+}
 
 
 
