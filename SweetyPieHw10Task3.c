@@ -115,9 +115,9 @@ void ReadFile(char *fName,  long unsigned int num[])
 	}
     for (int i = 0; i < 3; i ++)
     {
-        MPEGVersion (num[ i + 1]);
-        Layer (num [ i + 1]);
-        SamplingRate( num[i + 1] );
+        MPEGVersion (num[ i ]);
+        Layer (num [ i ]);
+        SamplingRate( num[i ] );
     }
 
 	return;
@@ -140,7 +140,8 @@ void ReadFile(char *fName,  long unsigned int num[])
     // this is for find the mpeg field
     rest = data & 0x00180000;
     // sifting the rest to make things easier
-     rest = rest >> 18;
+     rest = rest >> 19;
+     printf("%lX\n %lX\n", rest , data);
     switch (rest )
     {
         case 0 :	
@@ -172,7 +173,7 @@ void Layer ( long unsigned  int data)
       
     rest = data & 0x00060000;
     // sifting the rest to make things easier
-    rest = rest >> 16;
+    rest = rest >> 17;
     switch (rest )
     {
         case 0:	
@@ -200,8 +201,8 @@ void SamplingRate(  long unsigned int data )
      long unsigned int lay,  rest; // lay for the speed and rest well is for the rest
     rest = data & 0x00000c00;
     lay  = data & 0x00180000;
-   rest =  rest >> 9;
-   lay = lay >> 18;
+   rest =  rest >> 10;
+   lay = lay >> 19;
     if (lay ==  3 ) // mpeg1)
     {
     switch (rest )
