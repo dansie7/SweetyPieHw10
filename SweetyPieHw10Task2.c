@@ -43,10 +43,49 @@ int  main(int argc, char *argv[])
 	FILE *inFile;
 	inFile = fopen(data, "r");
 
+	struct tsunami stats;
+	struct tsunami *ptr;
+	ptr = &stats;
+	int count = 0;
+	float average, avgWave, maxWave;
+	float max = 0;
+
 	if(inFile != NULL)
 	{
-		printf("\nTotally read the file\n");
+		printf("\nFile successfully read\n");
+
+		while(fscanf(inFile, "%d %d %d %d %lf %s", &stats.mo, &stats.da, &stats.yr, &stats.fatalities, &stats.max_height, stats.location) != EOF)
+		{
+			//the following print statement can 
+			//be commented out, it just shows whats
+			//being read
+
+			printf("%d %d %d %d %.2lf %s\n", stats.mo, stats.da, stats.yr, stats.fatalities, stats.max_height, stats.location);
+
+			average += stats.max_height;
+			count++;
+
+			if(ptr->max_height > max)
+			{
+				max = ptr->max_height;
+			}
+		}
+
+		//Avg Max Wave Height(ft)
+		//3.28083 ft/meter
+		avgWave = (average/(count * 1.0)) * 3.28083;
+
+		//Max Wave Height(ft)
+		maxWave = max * 3.28084;
+
+		printf("\nTsunami Summary Data\n");
+		printf("Maximum Wave Height: %.2f ft\n", maxWave);
+		printf("Average Wave Height: %.2f ft\n", avgWave);
+		printf("\nTsunamis with greater than average heights:\n");
+
+		fclose(inFile);
 	}
+
 	else
 	{
 		printf("\nTxt file <%s> could not be read", data);
