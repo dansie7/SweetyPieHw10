@@ -62,13 +62,13 @@ void Usage(char **info)
 
 /* 
  * ===  FUNCTION  ======================================================================
- *         Name:  ReadFile
- *  Description:  
- *    Arguments:
- *       Return:
+ *         Name: ReadFile
+ *  Description: Read file and remove commas 
+ *    Arguments: Input filename string & 
+ *               an array to store info
+ *       Return: Nothing
  * =====================================================================================
  */
-
 void ReadFile(char *fName,  long unsigned int num[])
 {
 	FILE *inFile;
@@ -126,9 +126,9 @@ void ReadFile(char *fName,  long unsigned int num[])
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  MPEGVersion
- *  Description:  
- *    Arguments:
- *       Return:
+ *  Description:  Display MPEGVersion
+ *    Arguments:  An Array of Integers
+ *       Return:  Nothing
  * =====================================================================================
  */
 
@@ -166,6 +166,14 @@ void ReadFile(char *fName,  long unsigned int num[])
     return;
 }
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Layer
+ *  Description:  Display Layer
+ *    Arguments:  Array of Integers
+ *      Returns:  Nothing
+ * =====================================================================================
+ */
 void Layer ( long unsigned  int data)
 {
      long unsigned int  rest; // lay for the speed and rest well is for the rest
@@ -194,6 +202,14 @@ void Layer ( long unsigned  int data)
     }
     return;
 }
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Sampling Rate
+ *  Description:  Displays Sampling Rate
+ *    Arguments:  Array integers
+ *      Returns:  Nothing
+ * =====================================================================================
+ */
 void SamplingRate(  long unsigned int data )
 {
     // now to get other infromations
