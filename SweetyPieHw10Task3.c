@@ -37,7 +37,12 @@ int  main(int argc, char *argv[])
 	}
     strcpy(inF, argv[1]);
     ReadFile(inF, array);
-    //MPEGVersion( array);
+    for (int i = 0; i < 3; i ++)
+    {
+        MPEGVersion (array[ i ]);
+        Layer (array [ i ]);
+        SamplingRate( array[i ] );
+    }
 	return 0;
 }
 
@@ -113,12 +118,6 @@ void ReadFile(char *fName,  long unsigned int num[])
 	{
 		printf("[%ld][%lX]\n", num[i], num[i]);
 	}
-    for (int i = 0; i < 3; i ++)
-    {
-        MPEGVersion (num[ i ]);
-        Layer (num [ i ]);
-        SamplingRate( num[i ] );
-    }
 
 	return;
 }
@@ -141,22 +140,21 @@ void ReadFile(char *fName,  long unsigned int num[])
     rest = data & 0x00180000;
     // sifting the rest to make things easier
      rest = rest >> 19;
-     printf("%lX\n %lX\n", rest , data);
     switch (rest )
     {
-        case 0 :	
+        case 0 :
             printf("your MPEG Version is: MPEG version 2.5 \n");
             break;
 
-        case 1:	
+        case 1:
             printf("your MPEG Version is: reserved \n");
             break;
 
-        case 2:	
+        case 2:
             printf("your MPEG Version is: MPEG Version 2 \n");
             break;
 
-        default:	
+        default:
             printf("your MPEG Version is: MPEG Version 1 \n");
             break;
     }
