@@ -45,7 +45,7 @@ int  main(int argc, char *argv[])
 
 	struct tsunami stats;
 	struct tsunami *ptr;
-    struct tsunami gay;
+    struct tsunami wave;
 	ptr = &stats;
 	int count = 0;
 	float average, avgWave, maxWave;
@@ -57,11 +57,7 @@ int  main(int argc, char *argv[])
 
 		while(fscanf(inFile, "%d %d %d %d %lf %s", &stats.mo, &stats.da, &stats.yr, &stats.fatalities, &stats.max_height, stats.location) != EOF)
 		{
-			//the following print statement can 
-			//be commented out, it just shows whats
-			//being read
-
-			printf("%d %d %d %d %.2lf %s\n", stats.mo, stats.da, stats.yr, stats.fatalities, stats.max_height, stats.location);
+			//printf("%d %d %d %d %.2lf %s\n", stats.mo, stats.da, stats.yr, stats.fatalities, stats.max_height, stats.location);
 
 			average += stats.max_height;
 			count++;
@@ -74,7 +70,7 @@ int  main(int argc, char *argv[])
 
 		//Avg Max Wave Height(ft)
 		//3.28083 ft/meter
-		avgWave = (average/(count * 1.0)) * 3.28083;
+		avgWave = (average/(count)) * 3.28083;
 
 		//Max Wave Height(ft)
 		maxWave = max * 3.28084;
@@ -88,17 +84,13 @@ int  main(int argc, char *argv[])
 	    inFile = fopen(data, "r");
         avgWave = (average/count);
 
-		while(fscanf(inFile, "%d %d %d %d %lf %s", &gay.mo, &gay.da, &gay.yr, &gay.fatalities, &gay.max_height, gay.location) != EOF)
+		while(fscanf(inFile, "%d %d %d %d %lf %s", &wave.mo, &wave.da, &wave.yr, &wave.fatalities, &wave.max_height, wave.location) != EOF)
 		{
-			//the following print statement can 
-			//be commented out, it just shows whats
-			//being read
-
-
-			if(gay.max_height > avgWave)
+			if(wave.max_height > avgWave)
 			{
-            printf("%s\n" , gay.location);
+				printf("%s\n" , wave.location);
 			}
+			
 		}
 
 		fclose(inFile);
