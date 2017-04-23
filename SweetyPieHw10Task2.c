@@ -45,6 +45,7 @@ int  main(int argc, char *argv[])
 
 	struct tsunami stats;
 	struct tsunami *ptr;
+    struct tsunami gay;
 	ptr = &stats;
 	int count = 0;
 	float average, avgWave, maxWave;
@@ -80,8 +81,25 @@ int  main(int argc, char *argv[])
 
 		printf("\nTsunami Summary Data\n");
 		printf("Maximum Wave Height: %.2f ft\n", maxWave);
-		printf("Average Wave Height: %.2f ft\n", avgWave);
-		printf("\nTsunamis with greater than average heights:\n");
+		printf("Average Wave Height: %.2f ft\n\n", avgWave);
+		printf("Tsunamis with greater than average heights:\n");
+        
+		fclose(inFile);
+	    inFile = fopen(data, "r");
+        avgWave = (average/count);
+
+		while(fscanf(inFile, "%d %d %d %d %lf %s", &gay.mo, &gay.da, &gay.yr, &gay.fatalities, &gay.max_height, gay.location) != EOF)
+		{
+			//the following print statement can 
+			//be commented out, it just shows whats
+			//being read
+
+
+			if(gay.max_height > avgWave)
+			{
+            printf("%s\n" , gay.location);
+			}
+		}
 
 		fclose(inFile);
 	}
