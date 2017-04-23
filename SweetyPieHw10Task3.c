@@ -39,6 +39,7 @@ int  main(int argc, char *argv[])
 	ReadFile(inF, array);
 	for (int i = 0; i < 3; i ++)
 	{
+        printf("you have read %lx\n", array [i]);
 		MPEGVersion (array[ i ]);
 		Layer (array [ i ]);
 		SamplingRate( array[i ] );
