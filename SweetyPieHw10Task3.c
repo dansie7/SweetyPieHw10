@@ -27,22 +27,22 @@ void SamplingRate(  long unsigned int data );
 /* Main Program */
 int  main(int argc, char *argv[])
 {
-    char inF[FSIZE];
-     long unsigned int array[FSIZE];
+	char inF[FSIZE];
+	long unsigned int array[FSIZE];
 	char str[7] = "--help";
 
 	if(argc != 2 || (strcmp(argv[1], str) == 0))
 	{
 		Usage(&argv[0]);
 	}
-    strcpy(inF, argv[1]);
-    ReadFile(inF, array);
-    for (int i = 0; i < 3; i ++)
-    {
-        MPEGVersion (array[ i ]);
-        Layer (array [ i ]);
-        SamplingRate( array[i ] );
-    }
+	strcpy(inF, argv[1]);
+	ReadFile(inF, array);
+	for (int i = 0; i < 3; i ++)
+	{
+		MPEGVersion (array[ i ]);
+		Layer (array [ i ]);
+		SamplingRate( array[i ] );
+	}
 	return 0;
 }
 
@@ -82,7 +82,7 @@ void ReadFile(char *fName,  long unsigned int num[])
 	char header[FSIZE];
 	if(inFile != NULL)
 	{
-		printf("\n We can read %s\n", fName);
+		printf("\nWe can read %s\n\n", fName);
 		char c;
 		int i = 0;
 		int j = 0;
@@ -94,7 +94,7 @@ void ReadFile(char *fName,  long unsigned int num[])
 					continue;
 				case '\n':
 					header[i] = '\0';
-					printf("Done: %s\n\n", header);
+					//printf("Done: %s\n\n", header);
 					num[j] = strtoul(header, NULL, 16);
 					j++;
 					i = 0;//reset index
@@ -104,7 +104,7 @@ void ReadFile(char *fName,  long unsigned int num[])
 					i++;
 					break;
 			}
-			printf("[%c] i = [%d]\n", c, i);
+			//printf("[%c] i = [%d]\n", c, i);
 		}
 		
 	}
@@ -114,10 +114,10 @@ void ReadFile(char *fName,  long unsigned int num[])
 		exit(1);
 	}
 	// Display array of header (integers, hex)
-	for(int i = 0; i < 3; i++)
+	/*for(int i = 0; i < 3; i++)
 	{
 		printf("[%ld][%lX]\n", num[i], num[i]);
-	}
+	}*/
 
 	return;
 }
@@ -133,34 +133,32 @@ void ReadFile(char *fName,  long unsigned int num[])
 
  void MPEGVersion( long unsigned int data )
 { 
-     long unsigned int  rest; // lay for the speed and rest well is for the rest
+	long unsigned int  rest; // lay for the speed and rest well is for the rest
 
     // making a for look to do  all three thing in the mp3 file heare
     // this is for find the mpeg field
-    rest = data & 0x00180000;
+	rest = data & 0x00180000;
     // sifting the rest to make things easier
-     rest = rest >> 19;
-    switch (rest )
-    {
-        case 0 :
-            printf("your MPEG Version is: MPEG version 2.5 \n");
-            break;
+	rest = rest >> 19;
+    switch (rest)
+	{
+		case 0 :
+			printf("your MPEG Version is: MPEG version 2.5 \n");
+			break;
 
-        case 1:
-            printf("your MPEG Version is: reserved \n");
-            break;
+		case 1:
+			printf("your MPEG Version is: reserved \n");
+			break;
 
-        case 2:
-            printf("your MPEG Version is: MPEG Version 2 \n");
-            break;
+		case 2:
+			printf("your MPEG Version is: MPEG Version 2 \n");
+			break;
 
-        default:
-            printf("your MPEG Version is: MPEG Version 1 \n");
-            break;
-    }
-    
-    
-    
+		default:
+			printf("your MPEG Version is: MPEG Version 1 \n");
+			break;
+	}
+   
     return;
 }
 
@@ -174,30 +172,30 @@ void ReadFile(char *fName,  long unsigned int num[])
  */
 void Layer ( long unsigned  int data)
 {
-     long unsigned int  rest; // lay for the speed and rest well is for the rest
+	long unsigned int  rest; // lay for the speed and rest well is for the rest
     // this is for the layer
       
-    rest = data & 0x00060000;
+	rest = data & 0x00060000;
     // sifting the rest to make things easier
-    rest = rest >> 17;
-    switch (rest )
-    {
-        case 0:	
-            printf("your Layer is: reserved  \n");
-            break;
+	rest = rest >> 17;
+    switch (rest)
+	{
+		case 0:	
+			printf("your Layer is: reserved  \n");
+			break;
 
-        case 1:	
-            printf("your Layer is: Layer three \n");
-            break;
+		case 1:	
+			printf("your Layer is: Layer three \n");
+			break;
 
-        case 2:	
-            printf("your Layer is: Layer 2  \n");
-            break;
+		case 2:	
+			printf("your Layer is: Layer 2  \n");
+			break;
 
-        default:	
-            printf("your Layer is:  Layer 1 \n");
-            break;
-    }
+		default:	
+			printf("your Layer is:  Layer 1 \n");
+			break;
+	}
     return;
 }
 /* 
@@ -212,80 +210,74 @@ void SamplingRate(  long unsigned int data )
 {
     // now to get other infromations
 
-     long unsigned int lay,  rest; // lay for the speed and rest well is for the rest
-    rest = data & 0x00000c00;
-    lay  = data & 0x00180000;
-   rest =  rest >> 10;
-   lay = lay >> 19;
+	long unsigned int lay,  rest; // lay for the speed and rest well is for the rest
+	rest = data & 0x00000c00;
+	lay  = data & 0x00180000;
+	rest =  rest >> 10;
+	lay = lay >> 19;
     if (lay ==  3 ) // mpeg1)
-    {
-    switch (rest )
-    {
-        case 0:
-            printf("your sampling rate is: 44100 Hz\n");
-            break;
+	{
+		switch (rest )
+		{
+			case 0:
+				printf("your sampling rate is: 44100 Hz\ni\n");
+				break;
 
-        case 1:
-            printf("your sampling rate is: 48000 Hz\n");
-            break;
+			case 1:
+				printf("your sampling rate is: 48000 Hz\n\n");
+				break;
 
-        case 2:
-            printf("your sampling rate is: 32000 Hz\n");
-            break;
+			case 2:
+				printf("your sampling rate is: 32000 Hz\n\n");
+				break;
 
-        default:
-            printf("your sampling rate is: reserv. \n");
-            break;
+			default:
+				printf("your sampling rate is: reserv. \n\n");
+				break;
+		}
+	}
+	else if (lay  == 2)  // mpeg2)
+	{
+		switch (rest )
+		{
+			case 0:
+				printf("your sampling rate is: 22050 Hz\n\n");
+				break;
 
+			case 1:
+				printf("your sampling rate is: 24000 Hz\n\n");
+				break;
 
-    }
-    }
-    else if (lay  == 2)  // mpeg2)
-    {
-    switch (rest )
-    {
-        case 0:
-            printf("your sampling rate is: 22050 Hz\n");
-            break;
+			case 2:
+				printf("your sampling rate is: 16000 Hz\n\n");
+				break;
 
-        case 1:
-            printf("your sampling rate is: 24000 Hz\n");
-            break;
+			default:
+				printf("your sampling rate is: reserv \n\n");
+				break;
+		}
+	}
+	else if (lay ==  0 )// mpeg2.5)
+	{
+		switch (rest )
+		{
+			case 0:	
+				printf("your sampling rate is: 11025\n\n");
+				break;
 
-        case 2:
-            printf("your sampling rate is: 16000 Hz\n");
-            break;
+			case 1:	
+				printf("your sampling rate is: 12000\n\n");
+				break;
 
-        default:
-            printf("your sampling rate is: reserv \n");
-            break;
+			case 2:	
+				printf("your sampling rate is: 8000\n\n");
+				break;
 
-
-    }
-    }
-    else if (lay ==  0 )// mpeg2.5)
-    {
-    switch (rest )
-    {
-        case 0:	
-            printf("your sampling rate is: 11025\n");
-            break;
-
-        case 1:	
-            printf("your sampling rate is: 12000\n");
-            break;
-
-        case 2:	
-            printf("your sampling rate is: 8000\n");
-            break;
-
-        default:	
-            printf("your sampling rate is: reserv. \n");
-            break;
-
-
-    }
-    } 
+			default:
+				printf("your sampling rate is: reserv. \n\n");
+				break;
+		}
+	} 
     return;
 }
 
